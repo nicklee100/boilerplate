@@ -1,10 +1,24 @@
 import React from 'react';
-import {render} from 'react-dom';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import store from './store';
+//import { Main, Login, Signup, UserHome } from './components';
+//import { me } from './reducer/user';
 
-class App extends React.Component {
-  render () {
-    return <p> Hello React!</p>;
-  }
-}
+import App from './components'
 
-render(<App/>, document.getElementById('app'));
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <App/>
+    </Router>
+  </Provider>,
+  document.getElementById('app')
+)
+
+// ReactDOM.render(
+//   <App/>,
+//   document.getElementById('app')
+// )
